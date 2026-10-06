@@ -1,308 +1,432 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap');
+
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:
-SF Pro Display,
--apple-system,
-sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Montserrat',sans-serif;
 }
 
 html,
 body{
-width:100%;
-height:100%;
-overflow:hidden;
+    width:100%;
+    height:100%;
+    overflow:hidden;
 }
 
 :root{
 
---glass:
-rgba(255,255,255,.12);
+    --glass-bg:rgba(255,255,255,.12);
+    --glass-border:rgba(255,255,255,.18);
+    --text:#ffffff;
 
---glass-border:
-rgba(255,255,255,.22);
+    --shadow:
+        0 20px 80px rgba(0,0,0,.35);
 
---text:
-white;
+    --dock-bg:
+        rgba(255,255,255,.15);
 }
 
 body.light{
 
---glass:
-rgba(255,255,255,.7);
+    --glass-bg:rgba(255,255,255,.65);
+    --glass-border:rgba(255,255,255,.85);
 
---glass-border:
-rgba(255,255,255,.85);
+    --dock-bg:
+        rgba(255,255,255,.75);
 
---text:
-#111827;
+    --text:#111827;
 }
+
+body{
+    background:#0f172a;
+}
+
+/* Wallpaper */
 
 #wallpaper{
-position:fixed;
-inset:0;
+    position:fixed;
+    inset:0;
 
-background:
-linear-gradient(
-135deg,
-#1e1b4b,
-#312e81,
-#3b82f6
-);
+    background:
+    linear-gradient(
+        135deg,
+        #1e1b4b,
+        #312e81,
+        #3b82f6,
+        #06b6d4
+    );
 
-background-size:cover;
-background-position:center;
+    background-size:cover;
+    background-position:center;
+
+    z-index:-1;
 }
 
-body.light #wallpaper{
-background:
-linear-gradient(
-135deg,
-#dbeafe,
-#eff6ff,
-#ffffff
-);
-}
+/* Menu Bar */
 
 .menubar{
-position:fixed;
-top:12px;
-left:50%;
-transform:translateX(-50%);
 
-width:calc(100% - 40px);
-height:56px;
+    position:fixed;
 
-display:flex;
-justify-content:space-between;
-align-items:center;
+    top:16px;
+    left:50%;
 
-padding:0 20px;
+    transform:translateX(-50%);
 
-border-radius:30px;
+    width:calc(100% - 40px);
+    height:64px;
 
-background:var(--glass);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 
-backdrop-filter:blur(40px);
+    padding:0 22px;
 
-border:1px solid var(--glass-border);
+    border-radius:999px;
 
-z-index:5000;
+    background:var(--glass-bg);
+
+    backdrop-filter:blur(40px);
+    -webkit-backdrop-filter:blur(40px);
+
+    border:1px solid var(--glass-border);
+
+    z-index:10000;
 }
 
 .brand{
-color:var(--text);
-font-weight:700;
+
+    color:var(--text);
+
+    font-size:24px;
+    font-weight:800;
+
+    letter-spacing:.5px;
 }
 
 .menu-actions button{
-width:40px;
-height:40px;
 
-border:none;
+    width:44px;
+    height:44px;
 
-border-radius:50%;
+    border:none;
+    outline:none;
 
-cursor:pointer;
+    border-radius:50%;
 
-background:var(--glass);
-color:var(--text);
+    font-size:20px;
+
+    cursor:pointer;
+
+    background:var(--glass-bg);
+
+    color:var(--text);
+
+    transition:.25s;
 }
+
+.menu-actions button:hover{
+    transform:scale(1.08);
+}
+
+/* Desktop */
 
 #desktop{
-width:100%;
-height:100%;
-position:relative;
+    width:100%;
+    height:100%;
+    position:relative;
 }
+
+/* Windows */
 
 .window{
-position:absolute;
 
-width:1000px;
-height:700px;
+    position:absolute;
 
-overflow:hidden;
+    width:1100px;
+    height:720px;
 
-border-radius:36px;
+    overflow:hidden;
 
-background:var(--glass);
+    border-radius:42px;
 
-backdrop-filter:blur(40px);
+    background:var(--glass-bg);
 
-border:
-1px solid var(--glass-border);
+    backdrop-filter:blur(40px);
+    -webkit-backdrop-filter:blur(40px);
 
-box-shadow:
-0 25px 80px rgba(0,0,0,.35);
+    border:1px solid var(--glass-border);
 
-animation:pop .25s ease;
-}
-
-@keyframes pop{
-from{
-transform:scale(.9);
-opacity:0;
-}
-to{
-transform:scale(1);
-opacity:1;
-}
+    box-shadow:var(--shadow);
 }
 
 .titlebar{
-height:60px;
 
-display:flex;
-align-items:center;
-justify-content:space-between;
+    height:65px;
 
-padding:0 18px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 
-cursor:move;
+    padding:0 18px;
 
-background:
-rgba(255,255,255,.05);
+    background:
+    rgba(255,255,255,.05);
+
+    cursor:move;
 }
 
 .title{
-color:var(--text);
-font-weight:600;
+
+    color:var(--text);
+
+    font-size:18px;
+    font-weight:800;
+
+    letter-spacing:.4px;
 }
 
 .controls{
-display:flex;
-gap:10px;
+    display:flex;
+    gap:10px;
 }
 
 .control{
-width:16px;
-height:16px;
-border-radius:50%;
-cursor:pointer;
+
+    width:16px;
+    height:16px;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.control:hover{
+    transform:scale(1.15);
 }
 
 .close{
-background:#ff5f57;
+    background:#ff5f57;
 }
 
 .min{
-background:#febc2e;
+    background:#febc2e;
 }
 
 .max{
-background:#28c840;
+    background:#28c840;
 }
 
 .refresh{
-width:35px;
-height:35px;
 
-border:none;
+    width:40px;
+    height:40px;
 
-border-radius:50%;
+    border:none;
+    outline:none;
 
-background:var(--glass);
+    border-radius:50%;
 
-color:var(--text);
+    cursor:pointer;
 
-cursor:pointer;
+    font-size:18px;
+
+    background:var(--glass-bg);
+
+    color:var(--text);
+
+    transition:.25s;
+}
+
+.refresh:hover{
+    transform:rotate(90deg);
 }
 
 .window iframe{
-width:100%;
-height:calc(100% - 60px);
-border:none;
-background:white;
+
+    width:100%;
+    height:calc(100% - 65px);
+
+    border:none;
+
+    background:white;
 }
+
+/* Dock */
 
 #dock{
-position:fixed;
 
-left:50%;
-bottom:20px;
+    position:fixed;
 
-transform:translateX(-50%);
+    left:50%;
+    bottom:20px;
 
-display:flex;
-gap:16px;
+    transform:translateX(-50%);
 
-padding:14px 18px;
+    display:flex;
+    align-items:flex-end;
+    gap:14px;
 
-border-radius:36px;
+    padding:14px 18px;
 
-background:var(--glass);
+    border-radius:34px;
 
-backdrop-filter:blur(40px);
+    background:var(--dock-bg);
 
-border:
-1px solid var(--glass-border);
+    backdrop-filter:blur(50px);
+    -webkit-backdrop-filter:blur(50px);
 
-z-index:9999;
+    border:1px solid var(--glass-border);
+
+    z-index:9999;
 }
 
+/* Dock Apps */
+
 .app{
-width:70px;
-height:70px;
 
-font-size:34px;
+    width:74px;
+    height:74px;
 
-display:flex;
-align-items:center;
-justify-content:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-border-radius:24px;
+    border-radius:26px;
 
-cursor:pointer;
+    cursor:pointer;
 
-background:
-linear-gradient(
-135deg,
-rgba(255,255,255,.25),
-rgba(255,255,255,.1)
-);
+    font-size:38px;
 
-transition:.2s;
+    background:
+    linear-gradient(
+        135deg,
+        rgba(255,255,255,.35),
+        rgba(255,255,255,.12)
+    );
+
+    transition:
+        transform .2s,
+        box-shadow .2s;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.15);
 }
 
 .app:hover{
-transform:
-translateY(-12px)
-scale(1.15);
+
+    transform:
+        translateY(-12px)
+        scale(1.18);
+
+    box-shadow:
+        0 20px 40px rgba(0,0,0,.25);
 }
+
+/* Settings */
 
 .settings-pane{
 
-padding:25px;
-color:var(--text);
+    height:100%;
+
+    overflow:auto;
+
+    padding:30px;
+
+    color:var(--text);
 }
 
 .settings-pane h2{
-margin-bottom:15px;
+
+    font-size:26px;
+
+    margin-bottom:12px;
+
+    font-weight:800;
 }
 
 .settings-pane input{
-width:100%;
-height:48px;
 
-padding:10px;
+    width:100%;
 
-border:none;
+    height:56px;
 
-outline:none;
+    padding:16px;
 
-border-radius:18px;
+    margin-bottom:12px;
 
-margin-top:10px;
-margin-bottom:10px;
+    border:none;
+    outline:none;
+
+    border-radius:22px;
+
+    font-size:16px;
+    font-weight:700;
 }
 
 .settings-pane button{
-padding:12px 20px;
 
-border:none;
+    height:54px;
 
-border-radius:20px;
+    padding:0 24px;
 
-cursor:pointer;
+    border:none;
+    outline:none;
+
+    border-radius:22px;
+
+    font-size:16px;
+    font-weight:800;
+
+    cursor:pointer;
+
+    margin-bottom:20px;
+
+    background:white;
+
+    transition:.25s;
+}
+
+.settings-pane button:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+      0 12px 24px rgba(0,0,0,.18);
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar{
+    width:12px;
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:
+    rgba(255,255,255,.25);
+
+    border-radius:999px;
+}
+
+/* Animations */
+
+.window{
+    animation:windowOpen .25s ease;
+}
+
+@keyframes windowOpen{
+
+    from{
+        opacity:0;
+        transform:scale(.95);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
 }
